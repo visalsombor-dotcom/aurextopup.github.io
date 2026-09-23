@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Aurex TOPUP | Free Fire Diamonds</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #05070b;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 20px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #172235;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: #1688ff;
+    }
+
+    .online {
+      color: #39df83;
+      font-size: 13px;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .hero {
+      margin-bottom: 40px;
+    }
+
+    .hero small {
+      color: #1688ff;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    .hero h1 {
+      font-size: 55px;
+      margin: 15px 0;
+    }
+
+    .hero h1 span {
+      color: #1688ff;
+    }
+
+    .hero p {
+      color: #8995a5;
+      max-width: 550px;
+      line-height: 1.6;
+    }
+
+    .box {
+      background: #0b1018;
+      border: 1px solid #1b2736;
+      border-radius: 16px;
+      padding: 25px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      color: #8491a2;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 16px;
+      border-radius: 9px;
+      border: 1px solid #26364a;
+      background: #060a10;
+      color: white;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #1688ff;
+    }
+
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .package {
+      padding: 20px;
+      background: #080d14;
+      color: white;
+      border: 1px solid #1e2b3b;
+      border-radius: 12px;
+      cursor: pointer;
+      text-align: left;
+      transition: .2s;
+    }
+
+    .package:hover {
+      border-color: #1688ff;
+      transform: translateY(-2px);
+    }
+
+    .package.selected {
+      border-color: #1688ff;
+      background: #0c1c2d;
+    }
+
+    .diamond {
+      color: #1688ff;
+      font-size: 20px;
+    }
+
+    .package h3 {
+      font-size: 25px;
+      margin-top: 10px;
+    }
+
+    .package p {
+      color: #778597;
+      margin-top: 4px;
+    }
+
+    .price {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .summary {
+      margin-top: 20px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid #182332;
+      color: #8995a5;
+    }
+
+    .row strong {
+      color: white;
+    }
+
+    .total {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 0;
+      font-size: 20px;
+    }
+
+    .button {
+      width: 100%;
+      padding: 17px;
+      border: none;
+      border-radius: 9px;
+      background: #1688ff;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: #006de0;
+    }
+
+    .notice {
+      text-align: center;
+      color: #5f6c7d;
+      font-size: 11px;
+      margin-top: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #566274;
+      border-top: 1px solid #111b29;
+    }
+
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .packages {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 450px) {
+      .packages {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .package h3 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    AUREX <span>TOPUP</span>
+  </div>
+
+  <div class="online">
+    ● Online
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <small>FREE FIRE TOP UP</small>
+
+    <h1>
+      Power up your<br>
+      <span>Free Fire</span> account.
+    </h1>
+
+    <p>
+      Fast and easy Free Fire diamond top-up service.
+      Enter your Player ID and choose your diamond package.
+    </p>
+  </section>
+
+  <section class="box">
+
+    <h2>01 — Player ID</h2>
+
+    <label>FREE FIRE PLAYER ID</label>
+
+    <input
+      id="playerID"
+      type="text"
+      placeholder="Enter your Player ID"
+    >
+
+  </section>
+
+  <section class="box">
+
+    <h2>02 — Choose Diamonds</h2>
+
+    <div class="packages">
+
+      <button class="package" onclick="selectPackage(25, 0.25, this)">
+        <div class="diamond">◆</div>
+        <h3>25</h3>
+        <p>Diamonds</p>
+        <span class="price">$0.25</span>
+      </button>
+
+      <button class="package" onclick="selectPackage(100, 0.95, this)">
+        <div class="diamond">◆</div>
+        <h3>100</h3>
+        <p>Diamonds</p>
+        <span class="price">$0.95</span>
+      </button>
+
+      <button class="package" onclick="selectPackage(310, 2.85, this)">
+        <div class="diamond">◆</div>
+        <h3>310</h3>
+        <p>Diamonds</p>
+        <span class="price">$2.85</span>
+      </button>
+
+      <button class="package" onclick="selectPackage(520, 4.70, this)">
+        <div class="diamond">◆</div>
+        <h3>520</h3>
+        <p>Diamonds</p>
+        <span class="price">$4.70</span>
+      </button>
+
+      <button class="package" onclick="selectPackage(1060, 9.40, this)">
+        <div class="diamond">◆</div>
+        <h3>1060</h3>
+        <p>Diamonds</p>
+        <span class="price">$9.40</span>
+      </button>
+
+      <button class="package" onclick="selectPackage(2180, 18.90, this)">
+        <div class="diamond">◆</div>
+        <h3>2180</h3>
+        <p>Diamonds</p>
+        <span class="price">$18.90</span>
+      </button>
+
+    </div>
+
+  </section>
+
+  <section class="box summary">
+
+    <h2>Order Summary</h2>
+
+    <div class="row">
+      <span>Player ID</span>
+      <strong id="summaryID">—</strong>
+    </div>
+
+    <div class="row">
+      <span>Diamonds</span>
+      <strong id="summaryDiamonds">—</strong>
+    </div>
+
+    <div class="total">
+      <span>Total</span>
+      <strong id="summaryPrice">$0.00</strong>
+    </div>
+
+    <button class="button" onclick="checkout()">
+      Continue to Payment →
+    </button>
+
+    <p class="notice">
+      Demo checkout — payment and automatic delivery are not connected yet.
+    </p>
+
+  </section>
+
+</main>
+
+<footer>
+  AUREX TOPUP © 2026
+</footer>
+
+<script>
+
+let selectedDiamonds = 0;
+let selectedPrice = 0;
+
+function selectPackage(diamonds, price, button) {
+
+  document.querySelectorAll(".package").forEach(function(card) {
+    card.classList.remove("selected");
+  });
+
+  button.classList.add("selected");
+
+  selectedDiamonds = diamonds;
+  selectedPrice = price;
+
+  updateSummary();
+}
+
+document.getElementById("playerID").addEventListener("input", updateSummary);
+
+function updateSummary() {
+
+  const id = document.getElementById("playerID").value;
+
+  document.getElementById("summaryID").textContent =
+    id || "—";
+
+  document.getElementById("summaryDiamonds").textContent =
+    selectedDiamonds ? selectedDiamonds + " Diamonds" : "—";
+
+  document.getElementById("summaryPrice").textContent =
+    "$" + selectedPrice.toFixed(2);
+}
+
+function checkout() {
+
+  const id = document.getElementById("playerID").value;
+
+  if (!id) {
+    alert("Please enter your Free Fire Player ID.");
+    return;
+  }
+
+  if (!selectedDiamonds) {
+    alert("Please select a diamond package.");
+    return;
+  }
+
+  alert(
+    "Demo checkout only.\n\n" +
+    "Player ID: " + id +
+    "\nDiamonds: " + selectedDiamonds +
+    "\nTotal: $" + selectedPrice.toFixed(2)
+  );
+}
+
+</script>
+
+</body>
+  </html>
