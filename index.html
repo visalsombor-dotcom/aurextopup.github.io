@@ -983,13 +983,26 @@ footer {
   </div>
 </footer>
 
+
 <script>
 let selectedDiamonds = 0;
 let selectedPrice = 0;
 let selectedPayment = "";
-let verifiedPlayer = false;
 
-// Select diamond package
+// 1. Update the order summary
+function updateSummary() {
+  const id = document.getElementById("playerId").value.trim();
+
+  document.getElementById("summaryId").textContent = id || "—";
+
+  document.getElementById("summaryPackage").textContent =
+    selectedDiamonds ? selectedDiamonds + " Diamonds" : "—";
+
+  document.getElementById("summaryTotal").textContent =
+    "$" + selectedPrice.toFixed(2);
+}
+
+// 2. Select diamond package
 function selectPackage(diamonds, price, element) {
   selectedDiamonds = diamonds;
   selectedPrice = price;
@@ -1003,7 +1016,7 @@ function selectPackage(diamonds, price, element) {
   updateSummary();
 }
 
-// Select payment method
+// 3. Select payment method
 function selectPayment(method, element) {
   selectedPayment = method;
 
@@ -1016,52 +1029,66 @@ function selectPayment(method, element) {
   element.querySelector("input").checked = true;
 }
 
-// Update order summary
-function updateSummary() {
-  const id = document.getElementById("playerId").value.trim();
-
-  document.getElementById("summaryId").textContent = id || "—";
-
-  document.getElementById("summaryPackage").textContent =
-    selectedDiamonds ? selectedDiamonds + " Diamonds" : "—";
-
-  document.getElementById("summaryTotal").textContent =
-    "$" + selectedPrice.toFixed(2);
-}
-
-// Demo player check
+// 4. Player ID lookup
 async function checkPlayer() {
   const id = document.getElementById("playerId").value.trim();
   const message = document.getElementById("verifyMessage");
 
   if (!/^[0-9]{5,20}$/.test(id)) {
-    message.textContent = "Please enter a valid numeric Player ID.";
+    message.textContent = "Please enter a valid Player ID.";
     message.style.color = "#ff7777";
     return;
   }
 
-  // No real API is connected yet.
-  // Do not display a fake in-game name or claim verification.
-
-  verifiedPlayer = false;
+  message.textContent =
+    "Player lookup API is not connected yet. ID not verified.";
+  message.style.color = "#ffb86c";
 
   document.getElementById("playerName").textContent =
-    "Verification unavailable";
+    "Not verified";
 
   document.getElementById("summaryName").textContent =
     "Not verified";
-
-  message.textContent =
-    "Player lookup API is not connected yet. Your ID has not been verified.";
-
-  message.style.color = "#ffb86c";
-
-  updateSummary();
 }
 
-// Demo checkout
+// 5. Demo checkout
 function checkout() {
   const id = document.getElementById("playerId").value.trim();
 
   if (!/^[0-9]{5,20}$/.test(id)) {
-    al
+    alert("Enter a valid Player ID.");
+    return;
+  }
+
+  if (!selectedDiamonds) {
+    alert("Select a diamond package.");
+    return;
+  }
+
+  if (!selectedPayment) {
+    alert("Select a payment method.");
+    return;
+  }
+
+  alert(
+    "DEMO ORDER\n\n" +
+    "Player ID: " + id +
+    "\nDiamonds: " + selectedDiamonds +
+    "\nTotal: $" + selectedPrice.toFixed(2) +
+    "\nPayment: " + selectedPayment +
+    "\n\nReal payment and delivery are not connected."
+  );
+}
+
+// 6. Update ID as the customer types
+document.getElementById("playerId").addEventListener("input", updateSummary);
+
+// 7. Initialize the default package
+window.addEventListener("DOMContentLoaded", function() {
+  const defaultPackage = document.querySelectorAll(".package")[4];
+
+  if (defaultPackage) {
+    selectPackage(1060, 9.40, defaultPackage);
+  }
+});
+</script>
