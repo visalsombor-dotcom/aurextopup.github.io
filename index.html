@@ -1,423 +1,1067 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAW TOPUP | Free Fire Diamonds</title>
 
-  <title>Aurex TOPUP | Free Fire Diamonds</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+:root {
+  --bg: #050510;
+  --panel: #0c0b25;
+  --panel2: #111033;
+  --purple: #9b28ff;
+  --purple2: #6500ff;
+  --cyan: #00d9ff;
+  --text: #f6f4ff;
+  --muted: #aaa9cb;
+  --border: #3c2b80;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #05070b;
-      color: white;
-      min-height: 100vh;
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    header {
-      padding: 20px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #172235;
-    }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, Arial, sans-serif;
+}
 
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
+button, input {
+  font: inherit;
+}
 
-    .logo span {
-      color: #1688ff;
-    }
+button {
+  cursor: pointer;
+}
 
-    .online {
-      color: #39df83;
-      font-size: 13px;
-    }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-    .container {
-      max-width: 1050px;
-      margin: auto;
-      padding: 60px 20px;
-    }
+/* NAVBAR */
 
-    .hero {
-      margin-bottom: 40px;
-    }
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(5, 5, 20, .96);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 4%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
 
-    .hero small {
-      color: #1688ff;
-      font-weight: bold;
-      letter-spacing: 3px;
-    }
+.logo {
+  font-family: Orbitron, sans-serif;
+  font-size: 25px;
+  font-weight: 800;
+  font-style: italic;
+  white-space: nowrap;
+}
 
-    .hero h1 {
-      font-size: 55px;
-      margin: 15px 0;
-    }
+.logo span {
+  color: var(--purple);
+}
 
-    .hero h1 span {
-      color: #1688ff;
-    }
+.nav-links {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
 
-    .hero p {
-      color: #8995a5;
-      max-width: 550px;
-      line-height: 1.6;
-    }
+.nav-links a {
+  padding: 12px 16px;
+  border-radius: 10px;
+  color: #dedafa;
+  font-size: 14px;
+}
 
-    .box {
-      background: #0b1018;
-      border: 1px solid #1b2736;
-      border-radius: 16px;
-      padding: 25px;
-      margin-bottom: 20px;
-    }
+.nav-links a:hover,
+.nav-links a.active {
+  background: #19103b;
+  color: #c88cff;
+  box-shadow: 0 0 15px #831aff25;
+}
 
-    h2 {
-      margin-bottom: 18px;
-    }
+.online {
+  color: #a6ffcb;
+  background: #102b28;
+  border: 1px solid #1b5948;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  white-space: nowrap;
+}
 
-    label {
-      display: block;
-      color: #8491a2;
-      font-size: 12px;
-      margin-bottom: 8px;
-    }
+.online::before {
+  content: "● ";
+  color: #00ff91;
+}
 
-    input {
-      width: 100%;
-      padding: 16px;
-      border-radius: 9px;
-      border: 1px solid #26364a;
-      background: #060a10;
-      color: white;
-      font-size: 16px;
-      outline: none;
-    }
+/* HERO BANNER */
 
-    input:focus {
-      border-color: #1688ff;
-    }
+.hero {
+  position: relative;
+  min-height: 310px;
+  background:
+    linear-gradient(90deg, rgba(12,5,39,.88) 0%,
+    rgba(12,5,39,.45) 45%, rgba(12,5,39,.05) 100%),
+    url("banner.jpg") center 42% / cover no-repeat;
+  border-bottom: 2px solid var(--purple);
+  display: flex;
+  align-items: center;
+  padding: 35px 5%;
+  overflow: hidden;
+}
 
-    .packages {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(5,5,16,.3), transparent);
+  pointer-events: none;
+}
 
-    .package {
-      padding: 20px;
-      background: #080d14;
-      color: white;
-      border: 1px solid #1e2b3b;
-      border-radius: 12px;
-      cursor: pointer;
-      text-align: left;
-      transition: .2s;
-    }
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+}
 
-    .package:hover {
-      border-color: #1688ff;
-      transform: translateY(-2px);
-    }
+.ff-logo {
+  font-family: Orbitron, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  font-style: italic;
+  margin-bottom: 35px;
+}
 
-    .package.selected {
-      border-color: #1688ff;
-      background: #0c1c2d;
-    }
+.ff-logo span {
+  color: #ffce27;
+}
 
-    .diamond {
-      color: #1688ff;
-      font-size: 20px;
-    }
+.hero h1 {
+  font-family: Orbitron, sans-serif;
+  font-size: clamp(32px, 5vw, 55px);
+  line-height: 1.15;
+  font-weight: 800;
+  text-shadow: 3px 4px #16002f;
+  margin-bottom: 12px;
+}
 
-    .package h3 {
-      font-size: 25px;
-      margin-top: 10px;
-    }
+.hero h1 span {
+  color: #bc4bff;
+}
 
-    .package p {
-      color: #778597;
-      margin-top: 4px;
-    }
+.hero h2 {
+  font-size: 21px;
+  margin-bottom: 10px;
+}
 
-    .price {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
+.hero p {
+  color: #eee9ff;
+  font-size: 14px;
+  line-height: 1.7;
+}
 
-    .summary {
-      margin-top: 20px;
-    }
+.hero-features {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+  font-size: 13px;
+}
 
-    .row {
-      display: flex;
-      justify-content: space-between;
-      padding: 14px 0;
-      border-bottom: 1px solid #182332;
-      color: #8995a5;
-    }
+.hero-features span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-    .row strong {
-      color: white;
-    }
+.hero-features b {
+  color: #d38bff;
+  font-size: 22px;
+}
 
-    .total {
-      display: flex;
-      justify-content: space-between;
-      padding: 20px 0;
-      font-size: 20px;
-    }
+/* MAIN LAYOUT */
 
-    .button {
-      width: 100%;
-      padding: 17px;
-      border: none;
-      border-radius: 9px;
-      background: #1688ff;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.container {
+  max-width: 1300px;
+  width: 92%;
+  margin: 22px auto 35px;
+}
 
-    .button:hover {
-      background: #006de0;
-    }
+.panel {
+  background: linear-gradient(135deg, #100d2d, #08081c);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 25px #5500ff08;
+}
 
-    .notice {
-      text-align: center;
-      color: #5f6c7d;
-      font-size: 11px;
-      margin-top: 12px;
-    }
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #566274;
-      border-top: 1px solid #111b29;
-    }
+.step {
+  min-width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  font-size: 21px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #bf43ff, #6200d9);
+  clip-path: polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);
+  filter: drop-shadow(0 0 10px #9d27ff);
+}
 
-    @media (max-width: 700px) {
-      .hero h1 {
-        font-size: 40px;
-      }
+.section-heading h2 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
 
-      .packages {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
+.section-heading p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
 
-    @media (max-width: 450px) {
-      .packages {
-        grid-template-columns: 1fr 1fr;
-      }
+.heading-right {
+  margin-left: auto;
+  color: #c76bff;
+  font-family: Orbitron, sans-serif;
+  font-style: italic;
+  font-weight: 800;
+}
 
-      .package h3 {
-        font-size: 20px;
-      }
-    }
-  </style>
+/* PLAYER ID */
+
+.id-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.id-input {
+  flex: 1;
+  min-width: 0;
+  background: #07071b;
+  color: white;
+  border: 1px solid #3b2b75;
+  border-radius: 10px;
+  padding: 17px;
+  outline: none;
+}
+
+.id-input:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 12px #9b28ff35;
+}
+
+.primary-btn {
+  background: linear-gradient(110deg, #b32cff, #5622ff);
+  border: none;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-weight: 700;
+  box-shadow: 0 0 18px #8b26ff35;
+  transition: .2s;
+}
+
+.primary-btn:hover {
+  filter: brightness(1.2);
+  transform: translateY(-2px);
+}
+
+.player-info {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 12px;
+}
+
+.info-box {
+  background: #11112f;
+  border: 1px solid #28245c;
+  border-radius: 12px;
+  padding: 17px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.info-icon {
+  font-size: 27px;
+  color: #ce85ff;
+}
+
+.info-box p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #ddd9fa;
+}
+
+.info-box strong {
+  display: block;
+  color: #c86cff;
+  font-size: 14px;
+  margin-top: 3px;
+  overflow-wrap: anywhere;
+}
+
+/* DIAMOND PACKAGES */
+
+.packages {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.package {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: linear-gradient(135deg, #10102a, #08081a);
+  border: 1px solid #30266b;
+  border-radius: 12px;
+  transition: .2s;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.package:hover {
+  border-color: #a22cff;
+  transform: translateY(-3px);
+}
+
+.package.selected {
+  border: 2px solid #bd43ff;
+  box-shadow: 0 0 20px #a000ff55;
+  background: linear-gradient(135deg, #211044, #0d0a26);
+}
+
+.diamond {
+  width: 90px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  font-size: 48px;
+  filter: drop-shadow(0 0 12px #00aaff55);
+  flex-shrink: 0;
+}
+
+.package-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.package h3 {
+  font-size: 26px;
+  margin-bottom: 3px;
+}
+
+.package p {
+  color: #d7d5f4;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.price {
+  text-align: center;
+  background: linear-gradient(100deg, #2f7aff, #672cff);
+  border-radius: 7px;
+  padding: 9px 5px;
+  font-size: 14px;
+  font-weight: 800;
+  color: white;
+}
+
+.popular {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: #9b28ff;
+  padding: 6px 12px;
+  font-size: 10px;
+  font-weight: 800;
+  border-radius: 0 10px 0 10px;
+}
+
+/* ORDER AND PAYMENT */
+
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.checkout-grid .panel {
+  margin-bottom: 20px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #29234f;
+  font-size: 14px;
+}
+
+.summary-row span:last-child {
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.total {
+  font-size: 21px;
+  font-weight: 800;
+  color: #c35bff;
+  padding: 20px 0;
+}
+
+.safe-box {
+  background: #1a1543;
+  border: 1px solid #362677;
+  padding: 17px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #ded7ff;
+  margin-top: 12px;
+}
+
+.payment-methods {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.payment {
+  background: #11112d;
+  border: 1px solid #39306e;
+  border-radius: 10px;
+  padding: 15px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.payment.selected {
+  border: 2px solid #ad36ff;
+  box-shadow: 0 0 14px #9c27ff30;
+}
+
+.payment-logo {
+  height: 48px;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.payment label {
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.payment input {
+  accent-color: var(--purple);
+  margin-right: 7px;
+}
+
+.pay-btn {
+  width: 100%;
+  background: linear-gradient(100deg, #c128ff, #493aff, #00b9ff);
+  color: white;
+  border: none;
+  padding: 17px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 15px;
+  transition: .2s;
+}
+
+.pay-btn:hover {
+  filter: brightness(1.15);
+}
+
+.demo-note {
+  font-size: 11px;
+  text-align: center;
+  color: #aaa6d0;
+  line-height: 1.6;
+  margin-top: 13px;
+}
+
+/* FOOTER */
+
+footer {
+  background: #080718;
+  border-top: 2px solid var(--purple);
+  padding: 30px 5%;
+}
+
+.footer-inner {
+  max-width: 1300px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+  gap: 25px;
+  font-size: 13px;
+  color: #c9c4ed;
+}
+
+.footer-bottom {
+  max-width: 1300px;
+  margin: 25px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid #29234f;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #aaa5d0;
+}
+
+/* MOBILE */
+
+@media(max-width: 850px) {
+  .nav-links a {
+    padding: 10px;
+  }
+
+  .nav-links a:not(.active) {
+    display: none;
+  }
+
+  .hero {
+    min-height: 300px;
+    background-position: 58% center;
+  }
+
+  .hero-content {
+    max-width: 60%;
+  }
+
+  .hero-features {
+    gap: 12px;
+  }
+
+  .player-info {
+    grid-template-columns: 1fr;
+  }
+
+  .packages {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .checkout-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+@media(max-width: 520px) {
+  .navbar {
+    padding: 12px 4%;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .online {
+    font-size: 11px;
+    padding: 8px;
+  }
+
+  .hero {
+    min-height: 330px;
+    padding: 25px 5%;
+    background-position: 61% center;
+  }
+
+  .hero-content {
+    max-width: 85%;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .hero h2 {
+    font-size: 17px;
+  }
+
+  .hero p {
+    font-size: 12px;
+  }
+
+  .ff-logo {
+    font-size: 19px;
+    margin-bottom: 28px;
+  }
+
+  .hero-features {
+    font-size: 11px;
+    gap: 10px;
+  }
+
+  .container {
+    width: 94%;
+    margin-top: 14px;
+  }
+
+  .panel {
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  .section-heading {
+    gap: 10px;
+  }
+
+  .section-heading h2 {
+    font-size: 16px;
+  }
+
+  .section-heading p {
+    font-size: 11px;
+  }
+
+  .step {
+    min-width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+
+  .heading-right {
+    display: none;
+  }
+
+  .id-row {
+    flex-direction: column;
+  }
+
+  .id-input, .primary-btn {
+    width: 100%;
+  }
+
+  .packages {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .package {
+    padding: 15px;
+  }
+
+  .diamond {
+    width: 65px;
+    font-size: 38px;
+  }
+
+  .package h3 {
+    font-size: 22px;
+  }
+
+  .footer-links {
+    gap: 15px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">
-    AUREX <span>TOPUP</span>
-  </div>
+<!-- NAVIGATION -->
 
-  <div class="online">
-    ● Online
-  </div>
+<header class="navbar">
+  <a href="#" class="logo">RAW <span>TOPUP</span></a>
+
+  <nav class="nav-links">
+    <a href="#" class="active">⌂ Home</a>
+    <a href="#packages">◇ Top Up</a>
+    <a href="#about">ⓘ About</a>
+    <a href="#support">♧ Support</a>
+  </nav>
+
+  <div class="online">Online</div>
 </header>
+
+<!-- HERO BANNER -->
+
+<section class="hero">
+  <div class="hero-content">
+
+    <div class="ff-logo">
+      FREE F<span>!</span>RE
+    </div>
+
+    <h1>RAW <span>TOPUP</span></h1>
+
+    <h2>Fast • Safe • Affordable</h2>
+
+    <p>
+      Top up Free Fire Diamonds and get your favorite
+      items in just a few simple steps!
+    </p>
+
+    <div class="hero-features">
+      <span><b>ϟ</b> Instant Delivery</span>
+      <span><b>♢</b> 100% Safe & Secure</span>
+      <span><b>♧</b> 24/7 Support</span>
+    </div>
+
+  </div>
+</section>
 
 <main class="container">
 
-  <section class="hero">
-    <small>FREE FIRE TOP UP</small>
+  <!-- PLAYER VERIFICATION -->
 
-    <h1>
-      Power up your<br>
-      <span>Free Fire</span> account.
-    </h1>
+  <section class="panel">
+    <div class="section-heading">
+      <div class="step">01</div>
+      <div>
+        <h2>Player Verification</h2>
+        <p>Enter your Free Fire Player ID to check your in-game name.</p>
+      </div>
+      <div class="heading-right">FREE FIRE</div>
+    </div>
 
-    <p>
-      Fast and easy Free Fire diamond top-up service.
-      Enter your Player ID and choose your diamond package.
-    </p>
+    <div class="id-row">
+      <input
+        id="playerId"
+        class="id-input"
+        type="text"
+        inputmode="numeric"
+        placeholder="Enter Player ID (e.g. 123456789)"
+      >
+
+      <button class="primary-btn" onclick="checkPlayer()">
+        ⌕ Check ID
+      </button>
+    </div>
+
+    <div class="player-info">
+      <div class="info-box">
+        <div class="info-icon">♟</div>
+        <div>
+          <p>In-game Name</p>
+          <strong id="playerName">Not verified yet</strong>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <div class="info-icon">♢</div>
+        <p>Your ID will be verified with the Free Fire server.</p>
+      </div>
+
+      <div class="info-box">
+        <div class="info-icon">ⓘ</div>
+        <p>Make sure your Player ID is correct. The name will appear after verification.</p>
+      </div>
+    </div>
+
+    <p id="verifyMessage" style="margin-top:12px;font-size:13px;color:#c48cff"></p>
   </section>
 
-  <section class="box">
+  <!-- DIAMOND PACKAGES -->
 
-    <h2>01 — Player ID</h2>
-
-    <label>FREE FIRE PLAYER ID</label>
-
-    <input
-      id="playerID"
-      type="text"
-      placeholder="Enter your Player ID"
-    >
-
-  </section>
-
-  <section class="box">
-
-    <h2>02 — Choose Diamonds</h2>
+  <section class="panel" id="packages">
+    <div class="section-heading">
+      <div class="step">02</div>
+      <div>
+        <h2>Select Diamond Package</h2>
+        <p>Choose your favorite package and get your diamonds instantly!</p>
+      </div>
+    </div>
 
     <div class="packages">
 
-      <button class="package" onclick="selectPackage(25, 0.25, this)">
-        <div class="diamond">◆</div>
-        <h3>25</h3>
-        <p>Diamonds</p>
-        <span class="price">$0.25</span>
-      </button>
+      <div class="package" onclick="selectPackage(25,0.25,this)">
+        <div class="diamond">💎</div>
+        <div class="package-details">
+          <h3>25</h3>
+          <p>Diamonds</p>
+          <div class="price">$0.25</div>
+        </div>
+      </div>
 
-      <button class="package" onclick="selectPackage(100, 0.95, this)">
-        <div class="diamond">◆</div>
-        <h3>100</h3>
-        <p>Diamonds</p>
-        <span class="price">$0.95</span>
-      </button>
+      <div class="package" onclick="selectPackage(100,0.95,this)">
+        <div class="diamond">💎</div>
+        <div class="package-details">
+          <h3>100</h3>
+          <p>Diamonds</p>
+          <div class="price">$0.95</div>
+        </div>
+      </div>
 
-      <button class="package" onclick="selectPackage(310, 2.85, this)">
-        <div class="diamond">◆</div>
-        <h3>310</h3>
-        <p>Diamonds</p>
-        <span class="price">$2.85</span>
-      </button>
+      <div class="package" onclick="selectPackage(310,2.85,this)">
+        <div class="diamond">💎</div>
+        <div class="package-details">
+          <h3>310</h3>
+          <p>Diamonds</p>
+          <div class="price">$2.85</div>
+        </div>
+      </div>
 
-      <button class="package" onclick="selectPackage(520, 4.70, this)">
-        <div class="diamond">◆</div>
-        <h3>520</h3>
-        <p>Diamonds</p>
-        <span class="price">$4.70</span>
-      </button>
+      <div class="package" onclick="selectPackage(520,4.70,this)">
+        <div class="diamond">💎</div>
+        <div class="package-details">
+          <h3>520</h3>
+          <p>Diamonds</p>
+          <div class="price">$4.70</div>
+        </div>
+      </div>
 
-      <button class="package" onclick="selectPackage(1060, 9.40, this)">
-        <div class="diamond">◆</div>
-        <h3>1060</h3>
-        <p>Diamonds</p>
-        <span class="price">$9.40</span>
-      </button>
+      <div class="package selected" onclick="selectPackage(1060,9.40,this)">
+        <div class="popular">POPULAR</div>
+        <div class="diamond">💎</div>
+        <div class="package-details">
+          <h3>1060</h3>
+          <p>Diamonds</p>
+          <div class="price">$9.40</div>
+        </div>
+      </div>
 
-      <button class="package" onclick="selectPackage(2180, 18.90, this)">
-        <div class="diamond">◆</div>
-        <h3>2180</h3>
-        <p>Diamonds</p>
-        <span class="price">$18.90</span>
-      </button>
+      <div class="package" onclick="selectPackage(2180,18.90,this)">
+        <div class="diamond">💎</div>
+        <div class="package-details">
+          <h3>2180</h3>
+          <p>Diamonds</p>
+          <div class="price">$18.90</div>
+        </div>
+      </div>
 
     </div>
-
   </section>
 
-  <section class="box summary">
+  <!-- ORDER AND PAYMENT -->
 
-    <h2>Order Summary</h2>
+  <div class="checkout-grid">
 
-    <div class="row">
-      <span>Player ID</span>
-      <strong id="summaryID">—</strong>
-    </div>
+    <section class="panel">
+      <div class="section-heading">
+        <div class="step">03</div>
+        <div><h2>Order Summary</h2></div>
+      </div>
 
-    <div class="row">
-      <span>Diamonds</span>
-      <strong id="summaryDiamonds">—</strong>
-    </div>
+      <div class="summary-row">
+        <span>♟ Player ID</span>
+        <span id="summaryId">—</span>
+      </div>
 
-    <div class="total">
-      <span>Total</span>
-      <strong id="summaryPrice">$0.00</strong>
-    </div>
+      <div class="summary-row">
+        <span>♟ In-game Name</span>
+        <span id="summaryName">Not verified</span>
+      </div>
 
-    <button class="button" onclick="checkout()">
-      Continue to Payment →
-    </button>
+      <div class="summary-row">
+        <span>💎 Diamond Package</span>
+        <span id="summaryPackage">—</span>
+      </div>
 
-    <p class="notice">
-      Demo checkout — payment and automatic delivery are not connected yet.
-    </p>
+      <div class="summary-row total">
+        <span>💎 Total</span>
+        <span id="summaryTotal">$0.00</span>
+      </div>
 
-  </section>
+      <div class="safe-box">
+        🔒 Your information is safe with us.<br>
+        We never share your data.
+      </div>
+    </section>
 
+    <section class="panel">
+      <div class="section-heading">
+        <div class="step">04</div>
+        <div>
+          <h2>Payment Method</h2>
+          <p>Select your preferred payment method.</p>
+        </div>
+      </div>
+
+      <div class="payment-methods">
+
+        <div class="payment" onclick="selectPayment('ABA Pay',this)">
+          <div class="payment-logo">ABA<span style="color:#00c8ff"> PAY</span></div>
+          <label><input type="radio" name="payment"> ABA Pay</label>
+        </div>
+
+        <div class="payment" onclick="selectPayment('ACLEDA',this)">
+          <div class="payment-logo">ACLEDA</div>
+          <label><input type="radio" name="payment"> ACLEDA</label>
+        </div>
+
+        <div class="payment" onclick="selectPayment('Wing',this)">
+          <div class="payment-logo" style="color:#a5ff00">Wing</div>
+          <label><input type="radio" name="payment"> Wing</label>
+        </div>
+
+        <div class="payment" onclick="selectPayment('KHQR',this)">
+          <div class="payment-logo">
+            <span style="background:#e52c39;padding:5px 12px;border-radius:5px">KHQR</span>
+          </div>
+          <label><input type="radio" name="payment"> KHQR</label>
+        </div>
+
+      </div>
+
+      <button class="pay-btn" onclick="checkout()">
+        ▣ Continue to Payment →
+      </button>
+
+      <p class="demo-note">
+        Demo storefront only. No payment is collected and no
+        diamonds are delivered until a secure payment system
+        and authorized top-up API are connected.
+      </p>
+    </section>
+
+  </div>
 </main>
 
-<footer>
-  AUREX TOPUP © 2026
+<!-- FOOTER -->
+
+<footer id="about">
+  <div class="footer-inner">
+
+    <div>
+      <a href="#" class="logo">♛ RAW <span>TOPUP</span></a>
+      <p style="font-size:12px;color:#aaa5d0;margin-top:8px">
+        Free Fire Top-up Store
+      </p>
+    </div>
+
+    <div class="footer-links">
+      <a href="#">⌂ Home</a>
+      <a href="#packages">◇ Top Up</a>
+      <a href="#about">ⓘ About</a>
+      <a href="#support">♧ Support</a>
+    </div>
+
+    <div id="support">
+      <p style="font-size:13px;color:#c7bfff">Follow us</p>
+      <p style="margin-top:10px">Facebook • TikTok • Telegram</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 RAW TOPUP. All rights reserved.</p>
+    <p style="color:#c56aff;font-style:italic">Play More • Top Up Faster</p>
+  </div>
 </footer>
 
 <script>
-
 let selectedDiamonds = 0;
 let selectedPrice = 0;
+let selectedPayment = "";
+let verifiedPlayer = false;
 
-function selectPackage(diamonds, price, button) {
-
-  document.querySelectorAll(".package").forEach(function(card) {
-    card.classList.remove("selected");
-  });
-
-  button.classList.add("selected");
-
+// Select diamond package
+function selectPackage(diamonds, price, element) {
   selectedDiamonds = diamonds;
   selectedPrice = price;
+
+  document.querySelectorAll(".package").forEach(p => {
+    p.classList.remove("selected");
+  });
+
+  element.classList.add("selected");
 
   updateSummary();
 }
 
-document.getElementById("playerID").addEventListener("input", updateSummary);
+// Select payment method
+function selectPayment(method, element) {
+  selectedPayment = method;
 
+  document.querySelectorAll(".payment").forEach(p => {
+    p.classList.remove("selected");
+    p.querySelector("input").checked = false;
+  });
+
+  element.classList.add("selected");
+  element.querySelector("input").checked = true;
+}
+
+// Update order summary
 function updateSummary() {
+  const id = document.getElementById("playerId").value.trim();
 
-  const id = document.getElementById("playerID").value;
+  document.getElementById("summaryId").textContent = id || "—";
 
-  document.getElementById("summaryID").textContent =
-    id || "—";
-
-  document.getElementById("summaryDiamonds").textContent =
+  document.getElementById("summaryPackage").textContent =
     selectedDiamonds ? selectedDiamonds + " Diamonds" : "—";
 
-  document.getElementById("summaryPrice").textContent =
+  document.getElementById("summaryTotal").textContent =
     "$" + selectedPrice.toFixed(2);
 }
 
-function checkout() {
+// Demo player check
+async function checkPlayer() {
+  const id = document.getElementById("playerId").value.trim();
+  const message = document.getElementById("verifyMessage");
 
-  const id = document.getElementById("playerID").value;
-
-  if (!id) {
-    alert("Please enter your Free Fire Player ID.");
+  if (!/^[0-9]{5,20}$/.test(id)) {
+    message.textContent = "Please enter a valid numeric Player ID.";
+    message.style.color = "#ff7777";
     return;
   }
 
-  if (!selectedDiamonds) {
-    alert("Please select a diamond package.");
-    return;
-  }
+  // No real API is connected yet.
+  // Do not display a fake in-game name or claim verification.
 
-  alert(
-    "Demo checkout only.\n\n" +
-    "Player ID: " + id +
-    "\nDiamonds: " + selectedDiamonds +
-    "\nTotal: $" + selectedPrice.toFixed(2)
-  );
+  verifiedPlayer = false;
+
+  document.getElementById("playerName").textContent =
+    "Verification unavailable";
+
+  document.getElementById("summaryName").textContent =
+    "Not verified";
+
+  message.textContent =
+    "Player lookup API is not connected yet. Your ID has not been verified.";
+
+  message.style.color = "#ffb86c";
+
+  updateSummary();
 }
 
-</script>
+// Demo checkout
+function checkout() {
+  const id = document.getElementById("playerId").value.trim();
 
-</body>
-  </html>
+  if (!/^[0-9]{5,20}$/.test(id)) {
+    al
